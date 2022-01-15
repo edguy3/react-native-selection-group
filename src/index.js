@@ -5,7 +5,7 @@ import {
     // ViewPropTypes
 } from 'react-native';
 
-const stylePropType = require('react-native-style-prop-type');
+const stylePropType = require('react-style-proptype');
 
 
 /**
