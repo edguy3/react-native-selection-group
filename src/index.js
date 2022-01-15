@@ -2,21 +2,25 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {
     View,
-    ViewPropTypes
+    // ViewPropTypes
 } from 'react-native';
 
+import PropTypes from 'prop-types';
+const stylePropType = require('react-native-style-prop-type');
+
+
 /**
- * The only real strict requirement is that 'items' is an array of objects all of which have a field 
+ * The only real strict requirement is that 'items' is an array of objects all of which have a field
  * called 'optionText'.
- * 
- * onPress should probably be Selectionhandler.selectionHandler, same for isSelected. 
- * 
- * If you are using SelectionHandler, it is important that if you change the *items* prop, you hand 
- * over a *new instance* of SelectionHandler. See the ExampleApp for how to do this. Each group of 
- * questions can get its own SelectionHandler, just put everything in parallel arrays. 
- * 
+ *
+ * onPress should probably be Selectionhandler.selectionHandler, same for isSelected.
+ *
+ * If you are using SelectionHandler, it is important that if you change the *items* prop, you hand
+ * over a *new instance* of SelectionHandler. See the ExampleApp for how to do this. Each group of
+ * questions can get its own SelectionHandler, just put everything in parallel arrays.
+ *
  * Better yet just use the upcoming react-native-survey component that'll handle all of this for you.
- * 
+ *
  */
 export default class SelectionGroup extends React.Component {
 
@@ -32,9 +36,9 @@ export default class SelectionGroup extends React.Component {
             onItemDeselected,
             ...attributes
         } = this.props;
-        
+
         /**
-         * forceUpdate is called below to ensure a re-render happens, in case for whatever reason 
+         * forceUpdate is called below to ensure a re-render happens, in case for whatever reason
          * the client of this component doesn't take any action that forces a redraw.
          * This is actually super inefficent code, all elements are redrawn when any single element is touched.
          */
@@ -49,10 +53,10 @@ export default class SelectionGroup extends React.Component {
                         i,
                         isSelected(i),
                         () => {
-                            onPress(i); 
+                            onPress(i);
                             this.forceUpdate();
                             if (isSelected(i)) {
-                                if (onItemSelected) { 
+                                if (onItemSelected) {
                                     const selectedItems = [];
                                     if (getAllSelectedItemIndexes) {
                                         const selectedItemIndexes = getAllSelectedItemIndexes();
@@ -62,9 +66,9 @@ export default class SelectionGroup extends React.Component {
                                             }
                                         }
                                     }
-                                    onItemSelected(item, selectedItems); 
-                                }    
-                            } else if (onItemDeselected) { 
+                                    onItemSelected(item, selectedItems);
+                                }
+                            } else if (onItemDeselected) {
                                 const selectedItems = [];
                                 if (getAllSelectedItemIndexes) {
                                     const selectedItemIndexes = getAllSelectedItemIndexes();
@@ -74,8 +78,8 @@ export default class SelectionGroup extends React.Component {
                                         }
                                     }
                                 }
-                                onItemDeselected(item, selectedItems); 
-                            }    
+                                onItemDeselected(item, selectedItems);
+                            }
                         }
                     )
                 )}
@@ -122,7 +126,7 @@ SelectionGroup.propTypes = {
     onPress: PropTypes.func.isRequired,
     isSelected: PropTypes.func.isRequired,
     isDeselected: PropTypes.func,
-    containerStyle: ViewPropTypes.style,
+    containerStyle: stylePropType,
     renderContent: PropTypes.func.isRequired,
     onItemSelected: PropTypes.func,
     getAllSelectedItemIndexes: PropTypes.func,
