@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "prop-types": "^15.8.1",
-    "react-native-style-prop-type": "^2.0.1"
+    "react-native-style-prop-type": "*"
   },
   "devDependencies": {
     "eslint-config-rallycoding": "3.2.0",
